@@ -17,6 +17,8 @@ Plugin 'bling/vim-airline'
 Plugin 'Raimondi/delimitMate'
 """ Auto formatter
 Plugin 'Chiel92/vim-autoformat'
+""" File nav
+
 
 call vundle#end()
 
