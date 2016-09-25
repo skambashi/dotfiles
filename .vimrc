@@ -85,3 +85,7 @@ hi CursorLine term=none cterm=none
 """ Splitplane more naturally
 set splitbelow
 set splitright
+
+set clipboard=unnamed
+set backspace=indent,eol,start
+
