@@ -1,0 +1,34 @@
+source ~/git-completion.bash
+
+export HISTCONTROL=ignoredups
+export BLOCKSIZE=1k
+export RED=$(tput setaf 9)
+export ORANGE=$(tput setaf 172)
+export GREEN=$(tput setaf 002)
+export PURPLE=$(tput setaf 141)
+export WHITE=$(tput setaf 0)
+export RESET=$(tput sgr0)
+export CYAN=$(tput setaf 006)
+
+function parse_git_dirty() { [[ $(git status 2> /dev/null | tail -n1) != *"working tree clean"* ]] && echo "*"; }
+function parse_git_branch() { git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"; }
+export PS1="\n\[$ORANGE\]\[$RED\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" \[$GREEN\]| \")\[$CYAN\]\$(parse_git_branch)\[$WHITE\] \[$GREEN\]\$ \[$RESET\]"
+export PS2="\[$ORANGE\]→ \[$RESET\]"
+
+export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log; fi'
+
+title() { echo -ne "\033]0;"$*"\007"; }
+weather() { curl wttr.in/"$1"?m; }
+
+HISTSIZE=5000
+HISTFILESIZE=100000
+
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias mkdir='mkdir -pv'
+alias ls="ls -hpGF"
+alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
+alias f='open -a Finder ./'                 # Opens current directory in MacOS Finder
+alias glp='git log --pretty=format:"%C(yellow)%H %Cred%ad %Cblue%an%Cgreen%d%n%Creset%s%n" --date=short --graph'
+alias click='~/projects/click/target/debug/click'
+#PATH="$HOME/universe/eng-tools/bin:${PATH}"
