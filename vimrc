@@ -43,7 +43,6 @@ filetype plugin on
 
 
 "" Plugin Customization
-let g:airline_theme='solarized'
 set laststatus=2 " Show airline all the time
 set timeoutlen=50 " Speed up leaving insert mode
 
