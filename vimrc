@@ -10,7 +10,6 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-`
 """ Git plugin
 Plugin 'tpope/vim-fugitive'
 """ Syntax checker
@@ -93,7 +92,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 syntax enable
 set t_Co=256
 set background=dark
-colorscheme solarized
 """hi Normal ctermbg=NONE
 hi CursorLine term=none cterm=none
 
